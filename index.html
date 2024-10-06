@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Login</title>
+<meta name="description" content="Log in Page"/>
+<link rel="stylesheet" href="style.css">
+<style>
+</style>
+</head>
+<body>
+    <div class="login">
+        <header>
+            <hgroup>
+                <h1>User Login</h1>
+            </hgroup>
+        </header>
+        <p>Username: <input type="text" id="username" value="" placeholder="username"></p>
+        <p>Password:&nbsp;&nbsp;<input type="password" id="password" value="" placeholder="password"></p>
+        <p><a href="#">Create Account/Forget?</a><button class="button" onclick="login()">Login</button></p>
+        <p id="hint"></p>
+    </div>    
+    <script>
+        function login() {
+            if (document.getElementById("username").value == "sahaj" && document.getElementById("password").value == "1234"){
+                alert("Successfully Log in!");
+                localStorage.setItem("Sec1-score", 0);
+                localStorage.setItem("Sec1-answer", 0);
+                localStorage.setItem("Sec2-score", 0);
+                localStorage.setItem("Sec2-answer", 0);
+                localStorage.setItem("Sec3-score", 0);
+                localStorage.setItem("Sec3-answer", 0);
+                window.location.href = "math.html";
+            }
+            else document.getElementById("hint").innerHTML = "The correct username is 'sahaj', password is '1234'";
+        }
+    </script>
+</body>
+</html>

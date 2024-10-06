@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Question4</title>
+<meta name="description" content="Question4"/>
+<link rel="stylesheet" href="style.css">
+<style>
+</style>
+</head>
+<body>
+    <div class="box">
+        <header>
+            <hgroup>
+                <h1>Question 4</h1>
+            </hgroup>
+        </header>
+        <aside style="float:right;width:300px;">
+            <iframe width="300" height="169" src="https://www.youtube.com/embed/kOEDG3j1bjs" 
+                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+            <p style="font-size:10px;">Source: <a href="https://www.youtube.com/watch?v=kOEDG3j1bjs" target="_blank">https://www.youtube.com/watch?v=kOEDG3j1bjs</a></p>
+        </aside>
+        <form>
+            <p>Watch the video and answer the following question:</p>
+            <p>Which celestial object is being talked about in the video?</p>
+            <br><br><br>
+            <div class="option">
+                <input type="radio" id="A" name="video" value="true">
+                <label for="A">Black Hole</label>
+                <input type="radio" id="B" name="video" value="false">
+                <label for="B">Red Dwarf Star</label>
+            </div>
+            <br><br>
+            <div class="option">
+                <input type="radio" id="C" name="video" value="false">
+                <label for="C">Neutron Star</label>
+                <input type="radio" id="D" name="video" value="false">
+                <label for="D">QUASAR</label>
+            </div>
+            <br><br>
+            <div>
+                <input class="button" type="submit" value="Submit & Next Question">
+                <input class="button" onclick="cancel()" value="Clear Selection">
+            </div>
+        </form>
+    </div>
+    <script>
+        var form = document.querySelector("form");
+        form.addEventListener("submit", function(event) {
+            let data = new FormData(form);
+            let result = "";
+            let score = localStorage.getItem("Sec3-score");
+            let answer = localStorage.getItem("Sec3-answer");
+            for (const entry of data) {
+                result = entry[1];
+            };
+            if (result){
+                if (result == "true"){
+                    localStorage.setItem("Sec3-score", ++score);
+                    localStorage.setItem("Sec3-answer", ++answer);
+                } 
+                else {
+                    localStorage.setItem("Sec3-answer", ++answer);
+                }
+            }
+            window.location.href = "survey.html";
+            event.preventDefault();
+        }, false);
+
+        function cancel() {
+            var element = document.getElementsByName("video");
+            for(var i=0; i<element.length; i++)
+                element[i].checked = false;
+        }
+    </script>
+</body>
+</html>
